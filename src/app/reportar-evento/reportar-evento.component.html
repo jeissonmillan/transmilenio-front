@@ -1,1 +1,36 @@
-<p>reportar evento </p>
+
+<section class="evento_menu">
+  <button class="evento_menu--consultar">consultar</button>
+  <button class="evento_menu--reportar">reportar</button>
+</section>
+
+<section class="crear_evento">
+  <h1 class="crear_evento--titulo">Reportar evento</h1>
+  <div class="crear_evento--zona">
+    <label for="opciones_zona">Eleccione Zona: </label>
+    <select id="opciones_zona" name="Zona">
+      <option value="">Escoja una Zona</option>
+      <option value="opcion1">Zona 1</option>
+      <option value="opcion2">Zona 2</option>
+      <option value="opcion3">Zona 3</option>
+      <option value="opcion4">Zona 4</option>
+    </select>
+  </div>
+  <div class="crear_evento--evento">
+    <label for="opciones_evento">Seleccione Zona: </label>
+    <select id="opciones_evento" name="Zona">
+      <option value="">Escoja un tipo de evento: </option>
+      <option value="opcion1">Evento 1</option>
+      <option value="opcion2">Evento 2</option>
+      <option value="opcion3">Evento 3</option>
+      <option value="opcion4">Evento 4</option>
+    </select>
+  </div>
+  <form class="crear_evento--descripcion">
+      <label for="campoTexto">Ingrese su descripcion:</label>
+      <input type="text" id="campoTexto" name="campoTexto">
+  </form>
+  <div class="crear_evento--bottom">
+    <button class="crear_evento--enviar">Enviar</button>
+  </div>
+</section>
