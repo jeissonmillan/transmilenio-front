@@ -1,4 +1,15 @@
-p{
-  background-color: black;
-  color: aliceblue;
+.home_menu{
+  &--container{
+    background-color: black;
+    height: 115px;
+    width: 100%;
+  }
 }
+
+  section {
+    background-color: black;
+    height: 115px;
+    width: 100%;
+  }
+
+
