@@ -28,7 +28,8 @@ label{
     box-shadow: -1px 3px 19px 2px rgba(0, 0, 0, 0.44);
       -webkit-box-shadow: -1px 3px 19px 2px rgba(0, 0, 0, 0.44);
       -moz-box-shadow: -1px 3px 19px 2px rgba(0, 0, 0, 0.44);
-  &--titulo{
+
+      &--titulo{
     color: #000000;
     text-decoration: none;
     font-family: 'Faustina', serif;
@@ -37,13 +38,7 @@ label{
     text-align: center;
     padding: 20px 0px;
   }
-  &--zona{
-    display: grid;
-    width: calc(100% - 76px);
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-  }
-  &--evento{
+  &--lista{
     display: grid;
     width: calc(60% - 76px);
     grid-template-columns: 1fr 1fr;
@@ -52,21 +47,25 @@ label{
     margin-bottom: 20px;
     height: 25px;
 
-    & #opciones_evento{
+    & select, input{
       width: 200px;
     }
   }
-  &--zona{
-    display: grid;
-    width: calc(60% - 76px);
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-    justify-items: center;
-    margin-bottom: 20px;
-    height: 25px;
 
-    & #opciones_zona{
-      width: 200px;
-    }
+  &--bottom{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  &--enviar{
+    width: 100px;
+    height: 27px;
+    margin-top: 50px;
+    border-radius: 15px;
+    background: #ff7070;
+    color: #FFFFFF;
+    border: none;
+    font-family: "faustina";
+    font-weight: 900;
   }
 }

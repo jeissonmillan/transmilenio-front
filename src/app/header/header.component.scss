@@ -70,11 +70,11 @@
         font-weight: 400;
         font-size: 20px;
         width: 180px;
+        transition: 300ms;
 
         &:hover {
-
+          transition: 300ms;
           font-size: 25px;
-
         }
       }
 

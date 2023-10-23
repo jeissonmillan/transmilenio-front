@@ -1,12 +1,6 @@
-
-<section class="evento_menu">
-  <button class="evento_menu--consultar">consultar</button>
-  <button class="evento_menu--reportar">reportar</button>
-</section>
-
 <section class="crear_evento">
   <h1 class="crear_evento--titulo">Reportar evento</h1>
-  <div class="crear_evento--zona">
+  <div class="crear_evento--lista">
     <label for="opciones_zona">Eleccione Zona: </label>
     <select id="opciones_zona" name="Zona">
       <option value="">Escoja una Zona</option>
@@ -16,19 +10,28 @@
       <option value="opcion4">Zona 4</option>
     </select>
   </div>
-  <div class="crear_evento--evento">
-    <label for="opciones_evento">Seleccione Zona: </label>
+  <div class="crear_evento--lista">
+    <label for="opciones_evento">Seleccione Estacion: </label>
     <select id="opciones_evento" name="Zona">
-      <option value="">Escoja un tipo de evento: </option>
-      <option value="opcion1">Evento 1</option>
-      <option value="opcion2">Evento 2</option>
-      <option value="opcion3">Evento 3</option>
-      <option value="opcion4">Evento 4</option>
+      <option value="">Escoja una estacion: </option>
+      <option value="opcion1">Estacion 1</option>
+      <option value="opcion2">Estacion 2</option>
+      <option value="opcion3">Estacion 3</option>
+      <option value="opcion4">Estacion 4</option>
     </select>
   </div>
-  <form class="crear_evento--descripcion">
-      <label for="campoTexto">Ingrese su descripcion:</label>
-      <input type="text" id="campoTexto" name="campoTexto">
+  <div class="crear_evento--lista">
+    <label for="opciones_evento">Seleccione Tipo de Evento: </label>
+    <select id="opciones_evento" name="Zona">
+      <option value="">Escoja un tipo de evento: </option>
+      <option value="opcion1">Event 1</option>
+      <option value="opcion2">Evento 2</option>
+      <option value="opcion3">Evento 3</option>
+    </select>
+  </div>
+  <form class="crear_evento--lista">
+      <label for="descripcion-evento">Ingrese su descripcion:</label>
+      <input type="text" id="descripcion-evento" name="campoTexto">
   </form>
   <div class="crear_evento--bottom">
     <button class="crear_evento--enviar">Enviar</button>
