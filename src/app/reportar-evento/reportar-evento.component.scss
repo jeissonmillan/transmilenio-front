@@ -38,13 +38,7 @@ label{
     text-align: center;
     padding: 20px 0px;
   }
-  &--zona{
-    display: grid;
-    width: calc(100% - 76px);
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-  }
-  &--evento{
+  &--lista{
     display: grid;
     width: calc(60% - 76px);
     grid-template-columns: 1fr 1fr;
@@ -53,35 +47,11 @@ label{
     margin-bottom: 20px;
     height: 25px;
 
-    & #opciones_evento{
+    & select, input{
       width: 200px;
     }
   }
-  &--zona{
-    display: grid;
-    width: calc(60% - 76px);
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-    justify-items: center;
-    margin-bottom: 20px;
-    height: 25px;
 
-    & #opciones_zona{
-      width: 200px;
-    }
-  }
-  &--descripcion{
-    display: grid;
-    width: calc(60% - 76px);
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-    justify-items: center;
-    margin-bottom: 20px;
-    height: 100px;
-    #descripcion-evento{
-      width: 200px;
-    }
-  }
   &--bottom{
     display: flex;
     width: 100%;

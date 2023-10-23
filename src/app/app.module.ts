@@ -8,6 +8,10 @@ import { CommonModule } from '@angular/common';
 import { ConsultarComponent } from './consultar/consultar.component';
 import { ReportarEventoComponent } from './reportar-evento/reportar-evento.component';
 import { HeaderComponent } from './header/header.component';
+import { ConsultarEventoComponent } from './consultar-evento/consultar-evento.component';
+import { ConsultarEstacionComponent } from './consultar-estacion/consultar-estacion.component';
+import { ConsultarZonaComponent } from './consultar-zona/consultar-zona.component';
+import { ConsultarRutaComponent } from './consultar-ruta/consultar-ruta.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { HeaderComponent } from './header/header.component';
     HomeComponent,
     ConsultarComponent,
     ReportarEventoComponent,
-    HeaderComponent
+    HeaderComponent,
+    ConsultarEventoComponent,
+    ConsultarEstacionComponent,
+    ConsultarZonaComponent,
+    ConsultarRutaComponent
 
   ],
   imports: [

@@ -27,12 +27,49 @@
     box-shadow: -1px 3px 19px 2px rgba(0, 0, 0, 0.44);
       -webkit-box-shadow: -1px 3px 19px 2px rgba(0, 0, 0, 0.44);
       -moz-box-shadow: -1px 3px 19px 2px rgba(0, 0, 0, 0.44);
+    transition: 600ms;
     cursor: pointer;
+    &:hover{
+      width: 270px;
+      transition: 600ms;
+    }
     }
   &--link{
     text-decoration: none;
     justify-content: center;
     display: flex;
-
+    color: #000000;
+    font-weight: 900;
+    background-color: #fffb00;
+    width:max-content;
+    margin: auto;
+    padding: 4px 4px;
+    margin-top: 10px;
+    border-radius: 9px;
   }
 }
+.evento__consultar{
+  background-image: url('../img/consultar_evento.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+.estacione__consultar{
+  background-image: url('../img/consultar_estacion.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x:center;
+}
+.zona__consultar{
+  background-image: url('../img/consultar_zona.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x:center;
+}
+.ruta__consultar{
+  background-image: url('../img/consultar_ruta.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x:center;
+}
+
