@@ -1,4 +1,13 @@
-<section class="consultar__estacion">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a id="estaciones" class="nav-link active" aria-current="page" onclick="switchTab('estaciones')">Estaciones</a>
+  </li>
+  <li class="nav-item">
+    <a id="busqueda-especifica" class="nav-link" onclick="switchTab('busqueda-especifica')">Busqueda especifica</a>
+  </li>
+</ul>
+
+<section class="consultar__estacion id">
   <h2>consultar estacion</h2>
   <div class="consultar__estacion--container">
     <label for="opciones_zona">Selecciones una Zona: </label>
@@ -23,4 +32,7 @@
   <div class="crear_estacion--bottom">
     <button class="consultar__estacion--enviar">Enviar</button>
   </div>
+</section>
+<section class="consultar__estacion all">
+  <h2>Estaciones</h2>
 </section>

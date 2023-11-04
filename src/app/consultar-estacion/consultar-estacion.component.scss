@@ -1,3 +1,18 @@
+.nav-tabs{
+  width: calc(100% - 70px);
+  margin: 10px auto;
+  .nav-item{
+    .nav-link {
+      color: black;
+      &.active{
+        font-weight: bold;
+        color: rgb(73, 121, 226)
+      }
+      cursor: pointer;
+    }
+  }
+}
+
 .consultar__estacion{
   //background-image: url('../img/app.jpeg');
   width: calc(100% - 70px);
