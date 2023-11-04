@@ -1,1 +1,48 @@
-<p>consultar-ruta works!</p>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a [ngClass]="{'nav-link': true, 'active': activeTab === 'rutas'}" (click)="switchTab('rutas')">Rutas</a>
+  </li>
+  <li class="nav-item">
+    <a [ngClass]="{'nav-link': true, 'active': activeTab === 'busqueda-especifica'}" (click)="switchTab('busqueda-especifica')">Busqueda Especifica</a>
+  </li>
+  <li class="nav-item">
+    <a [ngClass]="{'nav-link': true, 'active': activeTab === 'busqueda-alterna'}" (click)="switchTab('busqueda-alterna')">Busqueda Ruta Alterna</a>
+
+  </li>
+</ul>
+
+<section [ngStyle]="{'display': activeTab === 'busqueda-especifica' ? 'flex' : 'none'}" class="consultar__rutas">
+  <h2>Consultar Ruta</h2>
+  <div class="consultar__rutas--container">
+    <label for="opciones_zona">Selecciones una Zona: </label>
+    <select id="opciones_zona" name="Zona">
+      <option value="">Escoja una Zona</option>
+      <option value="opcion1">Zona 1</option>
+      <option value="opcion2">Zona 2</option>
+      <option value="opcion3">Zona 3</option>
+      <option value="opcion4">Zona 4</option>
+    </select>
+  </div>
+  <div class="crear_ruta--bottom">
+    <button class="consultar__rutas--enviar">Enviar</button>
+  </div>
+</section>
+<section [ngStyle]="{'display': activeTab === 'rutas' ? 'flex' : 'none'}" class="consultar__rutas">
+  <h2>Rutas</h2>
+</section>
+<section [ngStyle]="{'display': activeTab === 'busqueda-alterna' ? 'flex' : 'none'}" class="consultar__rutas">
+  <h2>Consultar Ruta Alterna</h2>
+  <div class="consultar__rutas--container">
+    <label for="opciones_zona">Selecciones una Ruta: </label>
+    <select id="opciones_zona" name="Zona">
+      <option value="">Escoja una Ruta</option>
+      <option value="opcion1">ruta 1</option>
+      <option value="opcion2">ruta 2</option>
+      <option value="opcion3">ruta 3</option>
+      <option value="opcion4">ruta 4</option>
+    </select>
+  </div>
+  <div class="crear_ruta--bottom">
+    <button class="consultar__rutas--enviar">Enviar</button>
+  </div>
+</section>
