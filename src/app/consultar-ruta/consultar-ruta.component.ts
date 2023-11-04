@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./consultar-ruta.component.scss']
 })
 export class ConsultarRutaComponent {
+  activeTab: string = 'rutas'; // Inicialmente, 'rutas' está activa
 
+  switchTab(tab: string) {
+
+    this.activeTab = tab;
+  }
 }
