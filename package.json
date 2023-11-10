@@ -2,7 +2,7 @@
   "name": "transmilenio-front",
   "version": "0.0.0",
   "scripts": {
-    "postinstall": "npm install",
+    "postinstall": "npm cache clean --force && npm install",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
