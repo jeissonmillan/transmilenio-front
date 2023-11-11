@@ -3,7 +3,8 @@
 .home_header {
   display: flex;
   flex-direction: column;
-
+  max-width: 1200px;
+  width: 100%;
   .home_menu {
     &--header {
       display: flex;
@@ -89,8 +90,6 @@
 @media screen and (max-width: 768px) {
   .home_header {
     .home_menu {
-      &--header {
-        }
 
       &--nav {
         flex-direction: column;
@@ -98,8 +97,11 @@
 
       &--titulo {
         font-size: 30px;
+        &::before {
+          content: none;
+        }
         &::after {
-          transform: translate(-218px);
+          content: none;
         }
       }
 
@@ -108,7 +110,7 @@
 
         a {
           font-size: 15px;
-
+          border-bottom: 1px solid #929090;
           &:hover {
             font-size: 20px;
           }

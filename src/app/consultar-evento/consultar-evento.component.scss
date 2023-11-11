@@ -28,3 +28,11 @@
     font-weight: 900;
   }
 }
+@media screen and (max-width: 768px) {
+  .consultar__evento{
+    &--container{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
