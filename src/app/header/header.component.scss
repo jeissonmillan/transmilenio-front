@@ -69,7 +69,7 @@
         font-family: 'Faustina', serif;
         font-weight: 400;
         font-size: 20px;
-        width: 180px;
+        width: 200px;
         transition: 300ms;
 
         &:hover {
@@ -80,10 +80,45 @@
 
       .active-link {
         font-size: 25px;
-        //color: #ff0000;
         font-weight: 600;
       }
     }
   }
 
+}
+@media screen and (max-width: 768px) {
+  .home_header {
+    .home_menu {
+      &--header {
+        }
+
+      &--nav {
+        flex-direction: column;
+      }
+
+      &--titulo {
+        font-size: 30px;
+        &::after {
+          transform: translate(-218px);
+        }
+      }
+
+      &--container {
+        height: 120px;
+
+        a {
+          font-size: 15px;
+
+          &:hover {
+            font-size: 20px;
+          }
+        }
+
+        .active-link {
+          font-size: 20px;
+        }
+      }
+    }
+
+  }
 }
