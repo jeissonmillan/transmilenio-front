@@ -77,10 +77,8 @@
     flex-direction: column;
     align-items: center;
     &--container{
-      margin-bottom: 30px;
-      select {
-        margin-left: 10px;
-      }
+      display: flex;
+      flex-direction: column;
     }
     &--enviar{
       width: 100px;
@@ -95,3 +93,4 @@
     }
   }
 }
+
