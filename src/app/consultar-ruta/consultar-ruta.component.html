@@ -33,13 +33,23 @@
 <section [ngStyle]="{'display': activeTab === 'busqueda-alterna' ? 'flex' : 'none'}" class="consultar__rutas">
   <h2>Consultar Ruta Alterna</h2>
   <div class="consultar__rutas--container">
-    <label for="opciones_zona">Selecciones una Ruta: </label>
+    <label for="opciones_zona">Selecciones punto de partida: </label>
     <select id="opciones_zona" name="Zona">
-      <option value="">Escoja una Ruta</option>
-      <option value="opcion1">ruta 1</option>
-      <option value="opcion2">ruta 2</option>
-      <option value="opcion3">ruta 3</option>
-      <option value="opcion4">ruta 4</option>
+      <option value="">Escoja una Estacion</option>
+      <option value="opcion1">estacion 1</option>
+      <option value="opcion2">estacion 2</option>
+      <option value="opcion3">estacion 3</option>
+      <option value="opcion4">estacion 4</option>
+    </select>
+  </div>
+  <div class="consultar__rutas--container">
+    <label for="opciones_zona">Selecciones Destino: </label>
+    <select id="opciones_zona" name="Zona">
+      <option value="">Escoja una Estacion</option>
+      <option value="opcion1">estacion 1</option>
+      <option value="opcion2">estacion 2</option>
+      <option value="opcion3">estacion 3</option>
+      <option value="opcion4">estacion 4</option>
     </select>
   </div>
   <div class="crear_ruta--bottom">
