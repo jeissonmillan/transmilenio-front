@@ -1,0 +1,25 @@
+{
+  "duration" : 35,
+  "stations": [
+      {
+          "name" : "Portal Norte",
+          "stand" : true
+      },
+      {
+          "name" : "Toberín",
+          "stand" : true
+      },
+      {
+          "name" : "Cardio Infantil",
+          "stand" : false
+      },
+      {
+          "name" : "Mazurén",
+          "stand" : true
+      },
+      {
+          "name": "polo",
+          "stand": true
+      }
+  ]
+}
