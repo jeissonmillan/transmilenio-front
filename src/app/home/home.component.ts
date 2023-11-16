@@ -17,10 +17,10 @@ export class HomeComponent implements OnInit{
     this.llenarData();
   }
   llenarData(){
-    this.apiService.getData().subscribe(data=>{
+   /* this.apiService.getData().subscribe(data=>{
       this.data= data
       console.log(this.data);
-    })
+    })*/
   }
 
 }

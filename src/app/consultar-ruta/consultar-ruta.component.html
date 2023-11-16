@@ -10,7 +10,6 @@
 
   </li>
 </ul>
-
 <section [ngStyle]="{'display': activeTab === 'busqueda-especifica' ? 'flex' : 'none'}" class="consultar__rutas">
   <h2>Consultar Ruta</h2>
   <div class="consultar__rutas--container">
@@ -29,7 +28,6 @@
 </section>
 <section [ngStyle]="{'display': activeTab === 'rutas' ? 'flex' : 'none'}" class="consultar__rutas">
   <h2>Rutas</h2>
-  <img src="data:image/png;base64, ${}" />
 </section>
 <section [ngStyle]="{'display': activeTab === 'busqueda-alterna' ? 'flex' : 'none'}" class="consultar__rutas">
   <h2>Consultar Ruta Alterna</h2>
@@ -54,6 +52,7 @@
     </select>
   </div>
   <div class="crear_ruta--bottom">
-    <button class="consultar__rutas--enviar">Enviar</button>
+    <button class="consultar__rutas--enviar" (click)="enviarConsulta()">Enviar</button>
   </div>
+  <img *ngIf="imagenBase64" [src]="'data:image/png;base64,' + imagenBase64" alt="Imagen">
 </section>

@@ -7,24 +7,26 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./consultar-ruta.component.scss']
 })
 export class ConsultarRutaComponent implements OnInit {
+  datos: any;
+  imagenBase64: string | undefined;
+  activeTab: string = 'rutas'; // Define activeTab
 
-  datos:any;
-  constructor(private apiService : ApiService){}
-
+  constructor(private apiService: ApiService) { }
   ngOnInit(): void {
+
+  }
+  enviarConsulta(): void {
     this.apiService.enviarDatosDesdeArchivo().subscribe(
-      (data) => {
-        this.datos = data;
-        console.log(data);
+      (result) => {
+        if (result.response) {
+          this.imagenBase64 = result.response;
+        }
       },
       (error) => {
         console.error(error);
       }
     );
   }
-
-  activeTab: string = 'rutas'; // Inicialmente, 'rutas' está activa
-
   switchTab(tab: string) {
     this.activeTab = tab;
   }
