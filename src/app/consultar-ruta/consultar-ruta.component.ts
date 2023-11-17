@@ -12,9 +12,7 @@ export class ConsultarRutaComponent implements OnInit {
   activeTab: string = 'rutas'; // Define activeTab
 
   constructor(private apiService: ApiService) { }
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   enviarConsulta(): void {
     this.apiService.enviarDatosDesdeArchivo().subscribe(
       (result) => {

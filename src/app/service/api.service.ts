@@ -9,6 +9,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 export class ApiService {
   private urlImg = 'https://img-map-5cd18be2a1ca.herokuapp.com/api/getImg';
   private jsonFileUrl = 'assets/prueba.json';
+  private backUrl = 'https://poli-back-1-095db513e64a.herokuapp.com/api';
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +27,13 @@ export class ApiService {
       })
     );
   }
-
+  public obtenerZonas(): Observable<any[]> {
+    const zonasUrl = `${this.backUrl}/zonas`;
+    return this.http.get<any[]>(zonasUrl).pipe(
+      map((zonas) => zonas),
+      catchError((error) => throwError(error))
+    );
+  }
   private cargarDatosDesdeArchivo(): Observable<any> {
     return this.http.get<any>(this.jsonFileUrl);
   }
