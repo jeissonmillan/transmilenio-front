@@ -1,3 +1,13 @@
 <section class="consultar__zonas">
   <h2>Zonas</h2>
+  <div class="consultar__zonas--resultado ">
+    <ng-container *ngFor="let opcion of opcionesZona">
+      <div class="consultar__zonas--card card" *ngIf="opcion.value !== ''">
+        <div class="consultar__zonas--cardTitulo card-header">Zona</div>
+        <div class="consultar__zonas--cardtextcard-body text-primary">
+          <h5 class="card-title">{{ opcion.label }}</h5>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </section>

@@ -8,11 +8,8 @@ import { ZonaService } from '../service/zona.service';
 })
 export class ConsultarZonaComponent implements OnInit {
   opcionesZona: any[] = [];
-  activeTab: string = 'zona';
   constructor(private zonaService: ZonaService) { }
-  switchTab(tab: string) {
-    this.activeTab = tab;
-  }
+
   ngOnInit(): void {
     this.actualizarOpcionesZona();
   }
