@@ -14,13 +14,10 @@
   <h2>Consultar Ruta</h2>
   <div class="consultar__rutas--container">
     <label for="opciones_zona">Selecciones una Zona: </label>
-    <select id="opciones_zona" name="Zona">
-      <option value="">Escoja una Zona</option>
-      <option value="opcion1">Zona 1</option>
-      <option value="opcion2">Zona 2</option>
-      <option value="opcion3">Zona 3</option>
-      <option value="opcion4">Zona 4</option>
-    </select>
+  <select id="opciones_zona" name="Zona">
+    <option value="">Escoja una Zona</option>
+    <option *ngFor="let opcion of opcionesZona">{{ opcion?.label }}</option>
+  </select>
   </div>
   <div class="crear_ruta--bottom">
     <button class="consultar__rutas--enviar">Enviar</button>

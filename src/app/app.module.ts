@@ -12,6 +12,7 @@ import { ConsultarEventoComponent } from './consultar-evento/consultar-evento.co
 import { ConsultarEstacionComponent } from './consultar-estacion/consultar-estacion.component';
 import { ConsultarZonaComponent } from './consultar-zona/consultar-zona.component';
 import { ConsultarRutaComponent } from './consultar-ruta/consultar-ruta.component';
+import { ZonaService } from './service/zona.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ConsultarRutaComponent } from './consultar-ruta/consultar-ruta.componen
     HttpClientModule,
     CommonModule
   ],
-  providers: [],
+  providers: [ ZonaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
