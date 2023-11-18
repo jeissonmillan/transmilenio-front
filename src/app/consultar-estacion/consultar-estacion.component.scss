@@ -18,7 +18,11 @@
     }
   }
 }
-
+.card-title {
+  &:contains("Abierto") {
+    background-color: green;
+  }
+}
 .consultar__estacion{
   //background-image: url('../img/app.jpeg');
   width: calc(100% - 70px);
@@ -52,6 +56,13 @@
     border: none;
     font-family: "faustina";
     font-weight: 900;
+  }
+  &--card{
+    min-width: 170px;
+    margin-top: 8px;
+  }
+  &--cardTitulo{
+    text-align: center;
   }
 }
 @media screen and (max-width: 768px) {

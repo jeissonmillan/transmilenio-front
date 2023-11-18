@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { ZonaService } from '../service/zona.service';
 import { EstacionesService } from '../service/estacione.service';
 import { ApiService } from '../service/api.service';
+interface Estacion {
+  idEstacion: number;
+  nombre: string;
+  idZona: number;
+  estado: boolean;
+}
 @Component({
   selector: 'app-consultar-estacion',
   templateUrl: './consultar-estacion.component.html',
@@ -12,10 +18,12 @@ export class ConsultarEstacionComponent {
   opcionesEstacion: any[] = [];
   activeTab: string = 'estaciones';
   opcionesZona: any[] = [];
-  zonaSeleccionada: number | null = null;
   selectedZonaIndex: number | null = null;
+  selectedRutaIndex: number | null = null;
   filtrado: any[] = [];
   mostrarEstacion: boolean = false;
+  busquedaId: Estacion | null = null;
+
   //se llama servicio de zonas
   constructor(private zonaService: ZonaService, private estacionesService: EstacionesService, private apiService: ApiService) { }
 
@@ -49,27 +57,30 @@ export class ConsultarEstacionComponent {
     if (selectedIndex >= 0 && this.opcionesZona && this.opcionesZona.length > 0) {
         filtro= this.opcionesZona[selectedIndex-1].idZona;
         this.filtrado = this.opcionesEstacion = this.opcionesEstacion.filter(opcion => opcion.idZona === filtro);
-        console.log(this.filtrado);
-        console.log(selectedIndex);
-        console.log(filtro);
     } else {
       console.log('No hay elementos seleccionados o opcionesZona no está definido o está vacío.');
     }
   }
+  onRutaChange(event: any): void {
+    const selectedIndex = event.target.selectedIndex;
+    this.selectedRutaIndex = selectedIndex;
+  }
   enviarEstacionSeleccionada(): void {
-    // Verifica si hay una estación seleccionada
-
-    if (this.filtrado.length >= 0) {
+    // Verifica si hay una estación seleccionada y selectedRutaIndex no es nulo
+    if (this.filtrado.length > 0 && this.selectedRutaIndex !== null) {
+      let a: number | null = this.selectedRutaIndex;
       this.mostrarEstacion = true;
-      const idEstacionSeleccionada = this.filtrado[0].idEstacion;
-      this.apiService.obtenerEstacionPorId(idEstacionSeleccionada).subscribe(estacion => {
-        // Aquí puedes hacer algo con la respuesta de la API
-        console.log('Estación seleccionada:', estacion);
-      });
+      // Verifica que a no sea nulo y está dentro del rango de índices de filtrado
+      if (a >= 1 && a <= this.filtrado.length) {
+        const idEstacionSeleccionada = this.filtrado[a - 1].idEstacion;
+        this.apiService.obtenerEstacionPorId(idEstacionSeleccionada).subscribe((estacion: Estacion) => {
+          this.busquedaId = estacion;
+        });
+      } else {
+        console.log('Índice de estación seleccionada no válido.');
+      }
     } else {
-      console.log('No hay estación seleccionada.');
+      console.log('No hay estación seleccionada o selectedRutaIndex es nulo.');
     }
-    console.log('Estación seleccionada enviada:', this.filtrado);
-
   }
 }

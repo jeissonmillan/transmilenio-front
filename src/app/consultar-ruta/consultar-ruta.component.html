@@ -13,9 +13,9 @@
 <section [ngStyle]="{'display': activeTab === 'busqueda-especifica' ? 'flex' : 'none'}" class="consultar__rutas">
   <h2>Consultar Ruta</h2>
   <div class="consultar__rutas--container">
-    <label for="opciones_zona">Selecciones una Zona: </label>
-  <select id="opciones_zona" name="Zona">
-    <option value="">Escoja una Zona</option>
+    <label for="opciones_ruta">Selecciones una Ruta: </label>
+  <select id="opciones_ruta" name="Ruta">
+    <option value="">Escoja una Ruta</option>
     <option *ngFor="let opcion of opcionesRuta">{{ opcion?.nombre }}</option>
   </select>
   </div>

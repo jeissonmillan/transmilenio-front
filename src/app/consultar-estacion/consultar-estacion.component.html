@@ -1,9 +1,11 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a [ngClass]="{'nav-link': true, 'active': activeTab === 'estaciones'}" (click)="switchTab('estaciones')">Estaciones</a>
+    <a [ngClass]="{'nav-link': true, 'active': activeTab === 'estaciones'}"
+      (click)="switchTab('estaciones')">Estaciones</a>
   </li>
   <li class="nav-item">
-    <a [ngClass]="{'nav-link': true, 'active': activeTab === 'busqueda-especifica'}" (click)="switchTab('busqueda-especifica')">Busqueda especifica</a>
+    <a [ngClass]="{'nav-link': true, 'active': activeTab === 'busqueda-especifica'}"
+      (click)="switchTab('busqueda-especifica')">Busqueda especifica</a>
   </li>
 </ul>
 
@@ -18,7 +20,7 @@
   </div>
   <div class="consultar__estacion--container">
     <label for="opciones_zona">Selecciones una Estacion: </label>
-    <select id="opciones_estacion" name="Zona">
+    <select id="opciones_estacion" name="Zona" (change)="onRutaChange($event)">
       <option value="">Escoja una Estacion</option>
       <option *ngFor="let estacion of filtrado" [value]="estacion.idEstacion">{{ estacion.nombre }}</option>
     </select>
@@ -28,9 +30,9 @@
   </div>
   <div class="consultar__estacion--resultado" *ngIf="mostrarEstacion">
     <div class="consultar__estacion--card card">
-      <div class="consultar__estacion--cardTitulo card-header">Estacion: {{ filtrado[0]?.nombre }}</div>
-      <div class="consultar__estacion--cardtext card-body text-primary">
-        <h5 class="card-title">Estado: {{ filtrado[0]?.estado ? 'Abierto' : 'Cerrado' }}</h5>
+      <div *ngIf="busquedaId" class="consultar__estacion--cardTitulo card-header">Estacion: {{ busquedaId.nombre }}</div>
+      <div *ngIf="busquedaId" class="consultar__estacion--cardtext card-body text-primary">
+        <h5 class="card-title">Estado: {{ busquedaId.estado ? 'Abierto' : 'Cerrado' }}</h5>
       </div>
     </div>
   </div>
