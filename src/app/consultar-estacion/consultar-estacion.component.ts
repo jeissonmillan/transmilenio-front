@@ -25,7 +25,11 @@ export class ConsultarEstacionComponent {
   busquedaId: Estacion | null = null;
 
   //se llama servicio de zonas
-  constructor(private zonaService: ZonaService, private estacionesService: EstacionesService, private apiService: ApiService) { }
+  constructor(
+    private zonaService: ZonaService,
+    private estacionesService: EstacionesService,
+    private apiService: ApiService
+    ) { }
 
   switchTab(tab: string) {
     this.activeTab = tab;
@@ -36,19 +40,20 @@ export class ConsultarEstacionComponent {
     this.actualizarEstaciones();
   }
 
-  //se llenan las opciones segun la informacion de zonas
+  // Llena las opciones según la información de zonas
   actualizarOpcionesZona(): void {
     this.zonaService.getZona().then(opcionesZona => {
       this.opcionesZona = opcionesZona;
     });
   }
+  // Actualiza las estaciones
   actualizarEstaciones(): void {
     this.estacionesService.getEstacion().then(opcionesEstacion => {
       this.opcionesEstacion = opcionesEstacion;
 
     });
   }
-
+  // Maneja el cambio en la selección de la zona
   onZonaChange(event: any): void {
     this.actualizarEstaciones();
     let filtro: number | null = null;
@@ -61,10 +66,12 @@ export class ConsultarEstacionComponent {
       console.log('No hay elementos seleccionados o opcionesZona no está definido o está vacío.');
     }
   }
+  // Maneja el cambio en la selección de la ruta
   onRutaChange(event: any): void {
     const selectedIndex = event.target.selectedIndex;
     this.selectedRutaIndex = selectedIndex;
   }
+   // Envía la estación seleccionada de la api
   enviarEstacionSeleccionada(): void {
     // Verifica si hay una estación seleccionada y selectedRutaIndex no es nulo
     if (this.filtrado.length > 0 && this.selectedRutaIndex !== null) {

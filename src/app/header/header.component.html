@@ -1,8 +1,10 @@
 <header class="home_header">
-  <div class="home_menu--header">
-    <h1 class="home_menu--titulo">TRANSMILENIO</h1>
+  <div class="home_header--header">
+    <h1 class="home_header--titulo">TRANSMILENIO</h1>
+    <div class="home_header--menu"(click)="toggleMobileMenu()">
+    </div>
   </div>
-  <section class="home_menu--container">
+  <section class="home_menu--container" *ngIf="!isMobileMenuVisible">
     <nav class="home_menu--nav">
       <a routerLink="/home" routerLinkActive="active-link">Home</a>
       <a routerLink="/consultar" routerLinkActive="active-link">Consultar</a>

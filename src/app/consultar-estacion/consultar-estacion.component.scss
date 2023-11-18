@@ -63,6 +63,16 @@
   }
   &--cardTitulo{
     text-align: center;
+    font-weight: 700;
+  }
+  &--cardtext{
+    display: flex;
+    span{
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      margin: 8px;
+    }
   }
 }
 @media screen and (max-width: 768px) {

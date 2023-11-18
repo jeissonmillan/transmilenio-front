@@ -32,7 +32,10 @@
     <div class="consultar__estacion--card card">
       <div *ngIf="busquedaId" class="consultar__estacion--cardTitulo card-header">Estacion: {{ busquedaId.nombre }}</div>
       <div *ngIf="busquedaId" class="consultar__estacion--cardtext card-body text-primary">
-        <h5 class="card-title">Estado: {{ busquedaId.estado ? 'Abierto' : 'Cerrado' }}</h5>
+        <h5 class="card-title">
+          Estado: {{ busquedaId.estado ? 'Abierto' : 'Cerrado' }}
+        </h5>
+        <span [style.background-color]="busquedaId.estado ? 'green' : 'red'"></span>
       </div>
     </div>
   </div>
