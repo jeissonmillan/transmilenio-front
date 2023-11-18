@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { ZonaService } from '../service/zona.service';
+import { RutaService } from '../service/ruta.service';
 
 @Component({
   selector: 'app-consultar-ruta',
@@ -9,18 +10,28 @@ import { ZonaService } from '../service/zona.service';
 })
 export class ConsultarRutaComponent implements OnInit {
   opcionesZona: any[] = [];
+  opcionesRuta: any[] = [];
   datos: any;
   imagenBase64: string | undefined;
-  activeTab: string = 'rutas'; // Define activeTab
+  //funcionamiento de tab
+  activeTab: string = 'rutas';
+  switchTab(tab: string) {
+    this.activeTab = tab;
+  }
 
-  constructor(private zonaService: ZonaService, private apiService: ApiService) { }
+  constructor(private zonaService: ZonaService, private apiService: ApiService, private  rutaservice: RutaService) { }
 
   ngOnInit(): void {
     this.actualizarOpcionesZona();
+    this.actualizarOpcionesRuta();
   }
-
+  actualizarOpcionesRuta(): void {
+    this.rutaservice.getRuta().then(opcionesRuta => {
+      this.opcionesRuta = opcionesRuta;
+    });
+  }
   actualizarOpcionesZona(): void {
-    this.zonaService.getOpcionesZona().then(opcionesZona => {
+    this.zonaService.getZona().then(opcionesZona => {
       this.opcionesZona = opcionesZona;
     });
   }
@@ -36,9 +47,5 @@ export class ConsultarRutaComponent implements OnInit {
         console.error(error);
       }
     );
-  }
-
-  switchTab(tab: string) {
-    this.activeTab = tab;
   }
 }

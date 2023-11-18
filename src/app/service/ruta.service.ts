@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../service/api.service';
-@Injectable({
-  providedIn: 'root',
-})
-export class ZonaService {
-  constructor(private apiService: ApiService) {}
 
-  getZona(): Promise<any[]> {
-    return this.apiService.obtenerZonas()
+@Injectable({
+  providedIn: 'root'
+})
+export class RutaService {
+
+  constructor(private apiService: ApiService) {}
+  getRuta(): Promise<any[]> {
+    return this.apiService.obtenerRutas()
       .toPromise()
-      .then((zonas) => {
+      .then((ruta) => {
         // Verificar si zonas está definido
-        if (zonas) {
+        if (ruta) {
             // Transforma las zonas en opciones { value, label }
-            return zonas.map(zona => ({ idZona: zona.idZona, nombre: zona.nombre }));
+            return ruta.map(ruta => ({ idZona: ruta.idZona, nombre: ruta.nombre }));
         } else {
             // Si zonas es undefined, devuelve un array vacío
             return [];

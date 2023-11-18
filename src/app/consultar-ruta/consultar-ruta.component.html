@@ -16,7 +16,7 @@
     <label for="opciones_zona">Selecciones una Zona: </label>
   <select id="opciones_zona" name="Zona">
     <option value="">Escoja una Zona</option>
-    <option *ngFor="let opcion of opcionesZona">{{ opcion?.label }}</option>
+    <option *ngFor="let opcion of opcionesRuta">{{ opcion?.nombre }}</option>
   </select>
   </div>
   <div class="crear_ruta--bottom">

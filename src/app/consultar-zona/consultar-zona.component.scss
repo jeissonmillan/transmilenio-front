@@ -24,9 +24,12 @@
     justify-content: space-evenly;
     width: 100%;
     padding-top: 39px;
+    align-content: space-around;
+    flex-wrap: wrap;
   }
   &--card{
     min-width: 170px;
+    margin-top: 8px;
   }
   &--cardTitulo{
     text-align: center;

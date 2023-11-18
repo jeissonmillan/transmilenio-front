@@ -15,7 +15,7 @@ export class ReportarEventoComponent implements OnInit{
   }
 
   actualizarOpcionesZona(): void {
-    this.zonaService.getOpcionesZona().then(opcionesZona => {
+    this.zonaService.getZona().then(opcionesZona => {
       this.opcionesZona = opcionesZona;
     });
   }

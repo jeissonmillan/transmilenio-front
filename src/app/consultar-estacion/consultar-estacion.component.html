@@ -11,23 +11,28 @@
   <h2>consultar estacion</h2>
   <div class="consultar__estacion--container">
     <label for="opciones_zona">Selecciones una Zona: </label>
-    <select id="opciones_zona" name="Zona">
+    <select id="opciones_zona" name="Zona" (change)="onZonaChange($event)">
       <option value="">Escoja una Zona</option>
-      <option *ngFor="let opcion of opcionesZona">{{ opcion?.label }}</option>
+      <option *ngFor="let opcion of opcionesZona">{{ opcion.nombre }}</option>
     </select>
   </div>
   <div class="consultar__estacion--container">
     <label for="opciones_zona">Selecciones una Estacion: </label>
     <select id="opciones_estacion" name="Zona">
       <option value="">Escoja una Estacion</option>
-      <option value="opcion1">Estacion 1</option>
-      <option value="opcion2">Estacion 2</option>
-      <option value="opcion3">Estacion 3</option>
-      <option value="opcion4">Estacion 4</option>
+      <option *ngFor="let estacion of filtrado" [value]="estacion.idEstacion">{{ estacion.nombre }}</option>
     </select>
   </div>
   <div class="crear_estacion--bottom">
-    <button class="consultar__estacion--enviar">Enviar</button>
+    <button class="consultar__estacion--enviar" (click)="enviarEstacionSeleccionada()">Enviar</button>
+  </div>
+  <div class="consultar__estacion--resultado" *ngIf="mostrarEstacion">
+    <div class="consultar__estacion--card card">
+      <div class="consultar__estacion--cardTitulo card-header">Estacion: {{ filtrado[0]?.nombre }}</div>
+      <div class="consultar__estacion--cardtext card-body text-primary">
+        <h5 class="card-title">Estado: {{ filtrado[0]?.estado ? 'Abierto' : 'Cerrado' }}</h5>
+      </div>
+    </div>
   </div>
 </section>
 <section [ngStyle]="{'display': activeTab === 'busqueda-especifica' ? 'none' : 'flex'}" class="consultar__estacion">

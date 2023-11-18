@@ -13,6 +13,7 @@ import { ConsultarEstacionComponent } from './consultar-estacion/consultar-estac
 import { ConsultarZonaComponent } from './consultar-zona/consultar-zona.component';
 import { ConsultarRutaComponent } from './consultar-ruta/consultar-ruta.component';
 import { ZonaService } from './service/zona.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ZonaService } from './service/zona.service';
 
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
