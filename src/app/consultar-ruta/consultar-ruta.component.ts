@@ -67,9 +67,9 @@ export class ConsultarRutaComponent implements OnInit {
 
   enviarConsulta(): void {
     if (
-      this.seleccion.idRuta?.trim() !== '' &&
-      this.seleccion.estacionInicial?.trim() !== '' &&
-      this.seleccion.estacionFinal?.trim() !== ''
+      this.seleccion.diaSemana &&
+      this.seleccion.estacionInicial &&
+      this.seleccion.estacionFinal
     ) {
       const payload = {
         diaSemana: this.seleccion.diaSemana,
@@ -102,12 +102,9 @@ export class ConsultarRutaComponent implements OnInit {
         }
       );
     } else {
-      console.error('Por favor, complete todos los campos del formulario.');
-      console.error(this.seleccion);
+      alert('Por favor, complete todos los campos del formulario.');
     }
   }
-
-
   // Actualiza las estaciones
   actualizarEstaciones(): void {
     this.estacionesService.getEstacion().then(estaciones => {
