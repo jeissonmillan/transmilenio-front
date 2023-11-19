@@ -16,7 +16,7 @@ interface Estacion {
 
 export class ConsultarEstacionComponent {
   opcionesEstacion: any[] = [];
-  activeTab: string = 'estaciones';
+  activeTab: string = 'busqueda-especifica';
   opcionesZona: any[] = [];
   selectedZonaIndex: number | null = null;
   selectedRutaIndex: number | null = null;
