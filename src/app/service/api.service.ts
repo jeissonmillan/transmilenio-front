@@ -28,6 +28,15 @@ export class ApiService {
       })
     );
   }
+
+  public enviarConsultaRuta(payload: any): Observable<any> {
+    const consultaUrl = `${this.backUrl}/Rutas/GetStopsByRoute`;
+    return this.http.post(consultaUrl, payload).pipe(
+      map((response) => response),
+      catchError((error) => throwError(error))
+    );
+  }
+
   //peticion de zonas
   public obtenerZonas(): Observable<any[]> {
     const zonasUrl = `${this.backUrl}/zonas`;
