@@ -10,8 +10,8 @@ import { ApiService } from '../service/api.service';
 export class ConsultarEventoComponent implements OnInit {
   Zona: any[] = [];
   seleccion: number | null = null; // Corregido el nombre de la propiedad
-  evento: any[]=[];
-  estaciones: any[]=[];
+  evento: any;
+  estacion: any;
 
   //se llama servicio de zonas
   constructor(
@@ -39,8 +39,8 @@ export class ConsultarEventoComponent implements OnInit {
           alert('No se encontro ningun evento');
         }else{
            this.apiService.obtenerEstacionPorId(eleccion1.idEstacion).subscribe((estacion)=>{
-            this.estaciones = estacion;
-            console.log('este es estaciones',estacion)
+            this.estacion = estacion;
+            console.log('este es estaciones',estacion.nombre)
            });
         }
       });

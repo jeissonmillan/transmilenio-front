@@ -13,4 +13,15 @@
       <button class="consultar__evento--enviar">Enviar</button>
     </div>
   </form>
+  <div *ngIf="estacion || evento" class="consultar__evento--resultado">
+    <div class="consultar__evento--card card">
+      <div *ngIf="estacion" class="consultar__evento--cardTitulo card-header">Estacion: {{ estacion?.nombre }}</div>
+      <div *ngIf="evento" class="consultar__evento--cardtext card-body text-primary">
+        <h5 class="card-title">
+          Estado: {{ evento?.estado ? 'Cerrado' : 'Abierto' }}
+        </h5>
+        <span [style.background-color]="evento?.estado ? 'red' : 'green'"></span>
+      </div>
+    </div>
+  </div>
 </section>

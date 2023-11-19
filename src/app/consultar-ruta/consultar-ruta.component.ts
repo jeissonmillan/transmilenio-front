@@ -20,7 +20,7 @@ export class ConsultarRutaComponent implements OnInit {
   estacionesFiltradasFinal: any[] = [];
   //funcionamiento de tab
 
-  activeTab: string = 'rutas';
+  activeTab: string = 'busqueda-especifica';
 
   switchTab(tab: string) {
     this.activeTab = tab;
