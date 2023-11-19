@@ -46,17 +46,29 @@
     <!-- Agregamos campos para seleccionar estaciones inicial y final -->
     <div class="consultar__rutas--container">
       <label for="estacion_inicial">Selecciona Estación Inicial: </label>
-      <select id="estacion_inicial" name="EstacionInicial" [(ngModel)]="seleccion.estacionInicial">
-        <option *ngFor="let estacion of estaciones" [value]="estacion.idEstacion">{{ estacion?.nombre }}</option>
-      </select>
+      <input type="text" id="estacion_inicial" name="EstacionInicial" [(ngModel)]="seleccion.estacionInicial" (input)="filtrarEstacionesInicial($event)">
+      <div *ngIf="seleccion.estacionInicial && estacionesFiltradasInicial.length > 0" class="estaciones-sugeridas">
+        <ul>
+          <li *ngFor="let estacion of estacionesFiltradasInicial" (click)="seleccion.estacionInicial = estacion.nombre; estacionesFiltradasInicial = []">
+            {{ estacion.nombre }}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="consultar__rutas--container">
       <label for="estacion_final">Selecciona Estación Final: </label>
-      <select id="estacion_final" name="EstacionFinal" [(ngModel)]="seleccion.estacionFinal">
-        <option *ngFor="let estacion of estaciones" [value]="estacion.idEstacion">{{ estacion?.nombre }}</option>
-      </select>
+      <input type="text" id="estacion_final" name="EstacionFinal" [(ngModel)]="seleccion.estacionFinal" (input)="filtrarEstacionesFinal($event)">
+      <div *ngIf="seleccion.estacionFinal && estacionesFiltradasFinal.length > 0" class="estaciones-sugeridas">
+        <ul>
+          <li *ngFor="let estacion of estacionesFiltradasFinal" (click)="seleccion.estacionFinal = estacion.nombre; estacionesFiltradasFinal = []">
+            {{ estacion.nombre }}
+          </li>
+        </ul>
+      </div>
     </div>
+
+
 
   </form>
   <div class="crear_ruta--bottom">

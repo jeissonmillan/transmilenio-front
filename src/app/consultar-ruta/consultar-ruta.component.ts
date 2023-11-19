@@ -16,6 +16,8 @@ export class ConsultarRutaComponent implements OnInit {
   seleccion: any = {};
   imagenBase64: string | undefined;
 
+  estacionesFiltradasInicial: any[] = [];
+  estacionesFiltradasFinal: any[] = [];
   //funcionamiento de tab
 
   activeTab: string = 'rutas';
@@ -47,6 +49,20 @@ export class ConsultarRutaComponent implements OnInit {
     this.zonaService.getZona().then(opcionesZona => {
       this.opcionesZona = opcionesZona;
     });
+  }
+
+  filtrarEstacionesInicial(event: any): void {
+    const query = event.target.value.toLowerCase();
+    this.estacionesFiltradasInicial = this.estaciones.filter(estacion =>
+      estacion.nombre.toLowerCase().includes(query)
+    );
+  }
+
+  filtrarEstacionesFinal(event: any): void {
+    const query = event.target.value.toLowerCase();
+    this.estacionesFiltradasFinal = this.estaciones.filter(estacion =>
+      estacion.nombre.toLowerCase().includes(query)
+    );
   }
 
   enviarConsulta(): void {
