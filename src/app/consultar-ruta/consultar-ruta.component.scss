@@ -37,6 +37,39 @@
   flex-direction: column;
   align-items: center;
   &--container{
+    position: relative;
+    .estacion{
+      &__buscador{
+        margin-left: 10px;
+        float: right;
+        &--result-container{
+          box-shadow: 0px 10px 16px -4px rgba(0, 0, 0, 0.44);
+          width: 189px;
+          position: absolute;
+          top: 30px;
+          z-index: 1;
+          background: #fff;
+          right: 0;
+          padding: 0;
+          margin: 0;
+        }
+        &--resultados{
+          margin: 0;
+          padding: 0;
+        }
+        &--estaciones{
+          list-style: none;
+          cursor: pointer;
+          padding-top: 3px;
+          border-bottom: 1px solid #4949493b;
+          text-align: center;
+          &:hover{
+            background: #0d6efd;
+            color: #FFFFFF;
+          }
+        }
+      }
+    }
     margin-bottom: 30px;
     select {
       margin-left: 10px;
@@ -45,7 +78,6 @@
   &--enviar{
     width: 100px;
     height: 27px;
-    margin-top: 50px;
     border-radius: 15px;
     background: #ff7070;
     color: #FFFFFF;

@@ -16,6 +16,8 @@ export class ConsultarRutaComponent implements OnInit {
   seleccion: any = {};
   imagenBase64: string | undefined;
 
+  estacionesFiltradasInicial: any[] = [];
+  estacionesFiltradasFinal: any[] = [];
   //funcionamiento de tab
 
   activeTab: string = 'rutas';
@@ -49,11 +51,25 @@ export class ConsultarRutaComponent implements OnInit {
     });
   }
 
+  filtrarEstacionesInicial(event: any): void {
+    const query = event.target.value.toLowerCase();
+    this.estacionesFiltradasInicial = this.estaciones.filter(estacion =>
+      estacion.nombre.toLowerCase().includes(query)
+    );
+  }
+
+  filtrarEstacionesFinal(event: any): void {
+    const query = event.target.value.toLowerCase();
+    this.estacionesFiltradasFinal = this.estaciones.filter(estacion =>
+      estacion.nombre.toLowerCase().includes(query)
+    );
+  }
+
   enviarConsulta(): void {
     if (
-      this.seleccion.idRuta?.trim() !== '' &&
-      this.seleccion.estacionInicial?.trim() !== '' &&
-      this.seleccion.estacionFinal?.trim() !== ''
+      this.seleccion.diaSemana &&
+      this.seleccion.estacionInicial &&
+      this.seleccion.estacionFinal
     ) {
       const payload = {
         diaSemana: this.seleccion.diaSemana,
@@ -86,12 +102,9 @@ export class ConsultarRutaComponent implements OnInit {
         }
       );
     } else {
-      console.error('Por favor, complete todos los campos del formulario.');
-      console.error(this.seleccion);
+      alert('Por favor, complete todos los campos del formulario.');
     }
   }
-
-
   // Actualiza las estaciones
   actualizarEstaciones(): void {
     this.estacionesService.getEstacion().then(estaciones => {
