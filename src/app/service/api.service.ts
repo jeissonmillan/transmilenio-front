@@ -29,6 +29,7 @@ export class ApiService {
     );
   }
 
+  //peticion de ruta personalizada
   public enviarConsultaRuta(payload: any): Observable<any> {
     const consultaUrl = `${this.backUrl}/Rutas/GetStopsByRoute`;
     return this.http.post(consultaUrl, payload).pipe(
@@ -72,5 +73,13 @@ export class ApiService {
   //se cargan datos de rutas
   private cargarDatosDesdeArchivo(): Observable<any> {
     return this.http.get<any>(this.jsonFileUrl);
+  }
+  //peticion de estaciones por id
+  obtenerEventoPorId(idZona: number): Observable<any> {
+    const estacionUrl = `${this.backUrl}/Eventos/${idZona}`;
+    return this.http.get<any>(estacionUrl).pipe(
+      map((ruta) => ruta),
+      catchError((error) => throwError(error))
+    );
   }
 }

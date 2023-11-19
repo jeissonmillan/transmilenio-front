@@ -1,14 +1,16 @@
 
 <section class="consultar__evento">
-  <h2>consultar evento</h2>
-  <div class="consultar__evento--container">
-    <label for="opciones_zona">Selecciones una Zona: </label>
-  <select id="opciones_zona" name="Zona">
-    <option value="">Escoja una Zona</option>
-    <option *ngFor="let opcion of opcionesZona">{{ opcion.nombre }}</option>
-  </select>
-  </div>
-  <div class="crear_evento--bottom">
-    <button class="consultar__evento--enviar">Enviar</button>
-  </div>
+  <form (ngSubmit)="enviarConsultaevento()">
+    <h2>consultar evento</h2>
+    <div class="consultar__evento--container">
+      <label for="opciones_zona">Seleccione una Zona: </label>
+      <select id="zona" name="Zona" [(ngModel)]="seleccion">
+        <option value="">Escoja una Zona</option>
+        <option *ngFor="let opcion of Zona" [value]="opcion.idZona">{{ opcion.nombre }}</option>
+      </select>
+    </div>
+    <div class="crear_ruta--bottom">
+      <button class="consultar__evento--enviar">Enviar</button>
+    </div>
+  </form>
 </section>

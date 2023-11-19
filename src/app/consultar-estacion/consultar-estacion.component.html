@@ -1,8 +1,10 @@
 <ul class="nav nav-tabs">
+  <!--
   <li class="nav-item">
     <a [ngClass]="{'nav-link': true, 'active': activeTab === 'estaciones'}"
       (click)="switchTab('estaciones')">Estaciones</a>
   </li>
+  -->
   <li class="nav-item">
     <a [ngClass]="{'nav-link': true, 'active': activeTab === 'busqueda-especifica'}"
       (click)="switchTab('busqueda-especifica')">Busqueda especifica</a>
@@ -40,6 +42,8 @@
     </div>
   </div>
 </section>
+<!--
 <section [ngStyle]="{'display': activeTab === 'busqueda-especifica' ? 'none' : 'flex'}" class="consultar__estacion">
   <h2>Estaciones</h2>
 </section>
+-->
