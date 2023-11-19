@@ -19,13 +19,34 @@
   &--enviar{
     width: 100px;
     height: 27px;
-    margin-top: 50px;
+    margin-top: 10px;
     border-radius: 15px;
     background: #ff7070;
     color: #FFFFFF;
     border: none;
     font-family: "faustina";
     font-weight: 900;
+  }
+  &--bottom{
+    display: flex;
+    justify-content: center;
+  }
+  &--card{
+    min-width: 170px;
+    margin-top: 8px;
+  }
+  &--cardTitulo{
+    text-align: center;
+    font-weight: 700;
+  }
+  &--cardtext{
+    display: flex;
+    span{
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      margin: 8px;
+    }
   }
 }
 @media screen and (max-width: 768px) {
