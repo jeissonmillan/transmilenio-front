@@ -15,6 +15,7 @@ export class ConsultarRutaComponent implements OnInit {
   estaciones: any[] = [];
   seleccion: any = {};
   imagenBase64: string | undefined;
+  nombreEstacion: any;
 
   estacionesFiltradasInicial: any[] = [];
   estacionesFiltradasFinal: any[] = [];
@@ -72,15 +73,19 @@ export class ConsultarRutaComponent implements OnInit {
       this.seleccion.estacionFinal
     ) {
       const payload = {
-        diaSemana: this.seleccion.diaSemana,
         codigoOrigen: this.seleccion.estacionInicial,
         codigoDestino: this.seleccion.estacionFinal
       };
-      console.log('Payload:', payload); // Agrega esta línea para verificar el payload
+      const datos={
+        diaSemana: this.seleccion.diaSemana.toString(),
+        codigoOrigen: this.seleccion.origen.toString(),
+        codigoDestino: this.seleccion.destino.toString()
+      }
+      console.log('datos que se envian:', datos); // Agrega esta línea para verificar el payload
 
       this.apiService.enviarDatosDesdeArchivo().subscribe(
         (result) => {
-          console.log('Resultado desde archivo:', result); // Agrega esta línea para verificar el resultado
+          console.log('Resultado del POST:', result); // Agrega esta línea para verificar el resultado
           if (result.response) {
             this.imagenBase64 = result.response;
           }
@@ -90,7 +95,7 @@ export class ConsultarRutaComponent implements OnInit {
         }
       );
 
-      this.apiService.enviarConsultaRuta(payload).subscribe(
+      this.apiService.enviarConsultaRuta(datos).subscribe(
         (result: any) => {
           console.log('Resultado de la consulta de ruta:', result); // Agrega esta línea para verificar el resultado
           if (result.response) {
