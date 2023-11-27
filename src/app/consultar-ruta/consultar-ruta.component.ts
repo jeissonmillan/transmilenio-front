@@ -4,6 +4,7 @@ import { ZonaService } from '../service/zona.service';
 import { RutaService } from '../service/ruta.service';
 import { EstacionesService } from '../service/estacione.service';
 
+
 @Component({
   selector: 'app-consultar-ruta',
   templateUrl: './consultar-ruta.component.html',
@@ -15,12 +16,9 @@ export class ConsultarRutaComponent implements OnInit {
   estaciones: any[] = [];
   seleccion: any = {};
   imagenBase64: string | undefined;
-  nombreEstacion: any;
-
+  rutaSeleccionada: any = { duration: undefined, stations: {} };
   estacionesFiltradasInicial: any[] = [];
   estacionesFiltradasFinal: any[] = [];
-  //funcionamiento de tab
-
   activeTab: string = 'busqueda-especifica';
 
   switchTab(tab: string) {
@@ -29,9 +27,9 @@ export class ConsultarRutaComponent implements OnInit {
 
   constructor(
     private zonaService: ZonaService,
-    private apiService: ApiService,
     private rutaservice: RutaService,
-    private estacionesService: EstacionesService
+    private estacionesService: EstacionesService,
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
@@ -66,50 +64,53 @@ export class ConsultarRutaComponent implements OnInit {
     );
   }
 
-  enviarConsulta(): void {
-    if (
-      this.seleccion.diaSemana &&
-      this.seleccion.estacionInicial &&
-      this.seleccion.estacionFinal
-    ) {
-      const payload = {
-        codigoOrigen: this.seleccion.estacionInicial,
-        codigoDestino: this.seleccion.estacionFinal
-      };
-      const datos={
-        diaSemana: this.seleccion.diaSemana.toString(),
-        codigoOrigen: this.seleccion.origen.toString(),
-        codigoDestino: this.seleccion.destino.toString()
+ enviarConsulta(): void {
+  if (
+    this.seleccion.diaSemana &&
+    this.seleccion.estacionInicial &&
+    this.seleccion.estacionFinal
+  ) {
+    const payload = {
+      codigoOrigen: this.seleccion.estacionInicial,
+      codigoDestino: this.seleccion.estacionFinal
+    };
+    const datos = {
+      diaSemana: this.seleccion.diaSemana.toString(),
+      codigoOrigen: this.seleccion.estacionInicial.toString(),
+      codigoDestino: this.seleccion.estacionFinal.toString()
+    };
+    this.apiService.enviarConsultaRuta(datos).subscribe(
+      (result: any) => {
+        if (result.paradas) {
+          this.rutaSeleccionada = {
+            duration: result.tiempo,
+            stations: result.paradas.map((parada: any, index: number) => {
+              return {
+                name: parada[1],
+                stand: true // Ajusta esto según tus necesidades
+              };
+            })
+          };
+          this.apiService.enviarDatosImg(this.rutaSeleccionada).subscribe(
+            (result) => {
+              if (result.response) {
+                this.imagenBase64 = result.response;
+              }
+            },
+            (error: any) => {
+              console.error('Error en el POST:', error);
+            }
+          );
+        }
+      },
+      (error: any) => {
+        console.error('Error en la consulta de ruta:', error);
       }
-      console.log('datos que se envian:', datos); // Agrega esta línea para verificar el payload
-
-      this.apiService.enviarDatosDesdeArchivo().subscribe(
-        (result) => {
-          console.log('Resultado del POST:', result); // Agrega esta línea para verificar el resultado
-          if (result.response) {
-            this.imagenBase64 = result.response;
-          }
-        },
-        (error) => {
-          console.error('Error desde archivo:', error); // Agrega esta línea para verificar el error
-        }
-      );
-
-      this.apiService.enviarConsultaRuta(datos).subscribe(
-        (result: any) => {
-          console.log('Resultado de la consulta de ruta:', result); // Agrega esta línea para verificar el resultado
-          if (result.response) {
-            this.imagenBase64 = result.response;
-          }
-        },
-        (error: any) => {
-          console.error('Error en la consulta de ruta:', error); // Agrega esta línea para verificar el error
-        }
-      );
-    } else {
-      alert('Por favor, complete todos los campos del formulario.');
-    }
+    );
+  } else {
+    alert('Por favor, complete todos los campos del formulario.');
   }
+}
   // Actualiza las estaciones
   actualizarEstaciones(): void {
     this.estacionesService.getEstacion().then(estaciones => {

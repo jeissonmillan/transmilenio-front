@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,26 +9,9 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 export class ApiService {
   //URL de servicios
   private urlImg = 'https://img-map-5cd18be2a1ca.herokuapp.com/api/getImg';
-  private jsonFileUrl = 'assets/prueba.json';
   private backUrl = 'https://poli-back-1-095db513e64a.herokuapp.com/api';
 
   constructor(private http: HttpClient) { }
-  //peticion de imagen segun ruta
-  public enviarDatosDesdeArchivo(): Observable<any> {
-    return this.cargarDatosDesdeArchivo().pipe(
-      switchMap((body) => {
-        const headers = new HttpHeaders({
-          'Content-Type': 'application/json',
-        });
-
-        return this.http.post(this.urlImg, body, { headers, responseType: 'text' }).pipe(
-          map((response) => ({ response })),
-          catchError((error) => throwError(error))
-        );
-      })
-    );
-  }
-
   //peticion de ruta personalizada
   public enviarConsultaRuta(payload: any): Observable<any> {
     const consultaUrl = `${this.backUrl}/Rutas/GetStopsByRoute`;
@@ -70,15 +53,22 @@ export class ApiService {
       catchError((error) => throwError(error))
     );
   }
-  //se cargan datos de rutas
-  private cargarDatosDesdeArchivo(): Observable<any> {
-    return this.http.get<any>(this.jsonFileUrl);
-  }
   //peticion de estaciones por id
   obtenerEventoPorId(idZona: number): Observable<any> {
     const estacionUrl = `${this.backUrl}/Eventos/${idZona}`;
     return this.http.get<any>(estacionUrl).pipe(
       map((ruta) => ruta),
+      catchError((error) => throwError(error))
+    );
+  }
+  //peticion de imagen segun ruta
+  public enviarDatosImg( rutaSeleccionada: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(this.urlImg, rutaSeleccionada, { headers, responseType: 'text' }).pipe(
+      map((response) => ({ response })),
+      retry(1),
       catchError((error) => throwError(error))
     );
   }
