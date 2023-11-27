@@ -4,7 +4,8 @@
 .consultar__zonas{
   //background-image: url('../img/app.jpeg');
   width: calc(100% - 70px);
-  height: 433px;
+  min-height: 433px;
+  height: auto;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
