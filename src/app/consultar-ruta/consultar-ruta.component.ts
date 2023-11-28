@@ -55,6 +55,7 @@ export class ConsultarRutaComponent implements OnInit {
     this.estacionesFiltradasInicial = this.estaciones.filter(estacion =>
       estacion.nombre.toLowerCase().includes(query)
     );
+
   }
 
   filtrarEstacionesFinal(event: any): void {
@@ -79,6 +80,7 @@ export class ConsultarRutaComponent implements OnInit {
       codigoOrigen: this.seleccion.estacionInicial.toString(),
       codigoDestino: this.seleccion.estacionFinal.toString()
     };
+    console.log(datos)
     this.apiService.enviarConsultaRuta(datos).subscribe(
       (result: any) => {
         if (result.paradas) {
@@ -115,7 +117,6 @@ export class ConsultarRutaComponent implements OnInit {
   actualizarEstaciones(): void {
     this.estacionesService.getEstacion().then(estaciones => {
       this.estaciones = estaciones;
-
     });
   }
 }
