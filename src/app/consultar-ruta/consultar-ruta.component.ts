@@ -75,10 +75,11 @@ export class ConsultarRutaComponent implements OnInit {
       codigoOrigen: this.seleccion.estacionInicial,
       codigoDestino: this.seleccion.estacionFinal
     };
+    const diaSemanaNumero: number = parseInt(this.seleccion.diaSemana, 10);
     const datos = {
-      diaSemana: this.seleccion.diaSemana.toString(),
-      codigoOrigen: this.seleccion.estacionInicial.toString(),
-      codigoDestino: this.seleccion.estacionFinal.toString()
+      diaSemana: diaSemanaNumero,
+      codigoOrigen: this.seleccion.origen,
+      codigoDestino: this.seleccion.destino
     };
     console.log(datos)
     this.apiService.enviarConsultaRuta(datos).subscribe(
@@ -107,6 +108,7 @@ export class ConsultarRutaComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error en la consulta de ruta:', error);
+
       }
     );
   } else {
