@@ -20,6 +20,100 @@ export class ConsultarRutaComponent implements OnInit {
   estacionesFiltradasInicial: any[] = [];
   estacionesFiltradasFinal: any[] = [];
   activeTab: string = 'busqueda-especifica';
+  estacionesJson = [
+    {
+      "idEstacion": 9120,
+      "nombre": "Calle 63"
+    },
+    {
+      "idEstacion": 12000,
+      "nombre": "Puente Aranda"
+    },
+    {
+      "idEstacion": 5103,
+      "nombre": "Marsella "
+    },
+    {
+      "idEstacion": 3001,
+      "nombre": "La Campiña"
+    },
+    {
+      "idEstacion": 5005,
+      "nombre": "Transversal 86"
+    },
+    {
+      "idEstacion": 9109,
+      "nombre": "Ciudad universitaria"
+    },
+    {
+      "idEstacion": 9109,
+      "nombre": "Tercer Milenio"
+    },
+    {
+      "idEstacion": 4107,
+      "nombre": "Escuela Militar"
+    },
+    {
+      "idEstacion": 4003,
+      "nombre": "Av Cali"
+    },
+    {
+      "idEstacion": 2201,
+      "nombre": "Prado"
+    },
+    {
+      "idEstacion": 9110,
+      "nombre": "Av Jimenez"
+    },
+    {
+      "idEstacion": 9113,
+      "nombre": "Calle 22"
+    },
+    {
+      "idEstacion": 5002,
+      "nombre": "Biblioteca tintal"
+    },
+    {
+      "idEstacion": 7108,
+      "nombre": " Av El Dorado"
+    },
+    {
+      "idEstacion": 7109,
+      "nombre": "CAD "
+    },
+    {
+      "idEstacion": 9116,
+      "nombre": "Av 39"
+    },
+    {
+      "idEstacion": 2303,
+      "nombre": "Calle 85"
+    },
+    {
+      "idEstacion": 3004,
+      "nombre": "Gratamira"
+    },
+    {
+      "idEstacion": 3004,
+      "nombre": "Gratamira"
+    },
+    {
+      "idEstacion": 5000,
+      "nombre": "portal de las americas"
+    },
+    {
+      "idEstacion": 6103,
+      "nombre": "calle 26"
+    },
+    {
+      "idEstacion": 4000,
+      "nombre": "portal de la 80"
+    },
+    {
+      "idEstacion": 4105,
+      "nombre": "carrera 53"
+    },
+  ];
 
   switchTab(tab: string) {
     this.activeTab = tab;
@@ -77,9 +171,9 @@ export class ConsultarRutaComponent implements OnInit {
     };
     const diaSemanaNumero: number = parseInt(this.seleccion.diaSemana, 10);
     const datos = {
-      diaSemana: diaSemanaNumero,
-      codigoOrigen: this.seleccion.origen,
-      codigoDestino: this.seleccion.destino
+      "diaSemana": diaSemanaNumero,
+      "codigoOrigen": this.seleccion.origen,
+      "codigoDestino": this.seleccion.destino
     };
     console.log(datos)
     this.apiService.enviarConsultaRuta(datos).subscribe(
@@ -94,6 +188,7 @@ export class ConsultarRutaComponent implements OnInit {
               };
             })
           };
+          console.log(this.rutaSeleccionada)
           this.apiService.enviarDatosImg(this.rutaSeleccionada).subscribe(
             (result) => {
               if (result.response) {
@@ -121,4 +216,20 @@ export class ConsultarRutaComponent implements OnInit {
       this.estaciones = estaciones;
     });
   }
+  ///////CODIGO TEMPORAL////////////////
+
+  filtrarEstacionesInicialPrueba(event: any): void {
+    const query = event.target.value.toLowerCase();
+    this.estacionesFiltradasInicial = this.estacionesJson.filter(estacion =>
+      estacion.nombre.toLowerCase().includes(query)
+    );
+  }
+
+  filtrarEstacionesFinalPrueba(event: any): void {
+    const query = event.target.value.toLowerCase();
+    this.estacionesFiltradasFinal = this.estacionesJson.filter(estacion =>
+      estacion.nombre.toLowerCase().includes(query)
+    );
+  }
+
 }

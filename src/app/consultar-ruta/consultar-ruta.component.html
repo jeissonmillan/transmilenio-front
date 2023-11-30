@@ -31,24 +31,25 @@
   <h2>Rutas</h2>
 </section>
 -->
+<!--
 <section [ngStyle]="{'display': activeTab === 'busqueda-alterna' ? 'flex' : 'none'}" class="consultar__rutas">
   <h2>Consultar Ruta Alterna</h2>
   <form (ngSubmit)="enviarConsulta()">
     <div class="consultar__rutas--container">
       <label for="dia_semana">Selecciona Día de la Semana: </label>
       <select id="dia_semana" name="DiaSemana" [(ngModel)]="seleccion.diaSemana">
-        <option value=1>Lunes</option>
-        <option value=2>Martes</option>
-        <option value=3>Miercoles</option>
-        <option value=4>Jueves</option>
-        <option value=5>Viernes</option>
-        <option value=6>Sabado</option>
-        <option value=7>Domingo</option>
-        <!-- Agregar opciones para los demás días -->
+        <option value="1">Lunes</option>
+        <option value="2">Martes</option>
+        <option value="3">Miercoles</option>
+        <option value="4">Jueves</option>
+        <option value="5">Viernes</option>
+        <option value="6">Sabado</option>
+        <option value="7">Domingo</option>
+
       </select>
     </div>
 
-    <!-- Agregamos campos para seleccionar estaciones inicial y final -->
+    Agregamos campos para seleccionar estaciones inicial y final
     <div class="consultar__rutas--container">
       <label class="estacion" for="estacion_inicial">Selecciona Estación Inicial: </label>
       <input class="estacion__buscador" type="text" id="estacion_inicial" name="EstacionInicial" [(ngModel)]="seleccion.estacionInicial" (input)="filtrarEstacionesInicial($event)"autocomplete="off">
@@ -77,4 +78,53 @@
     <button class="consultar__rutas--enviar" (click)="enviarConsulta()">Enviar</button>
   </div>
   <img *ngIf="imagenBase64" [src]="'data:image/png;base64,' + imagenBase64" alt="Imagen">
+</section>-->
+
+<section [ngStyle]="{'display': activeTab === 'busqueda-alterna' ? 'flex' : 'none'}" class="consultar__rutas">
+  <h2>Consultar Ruta Alterna</h2>
+  <form (ngSubmit)="enviarConsulta()">
+    <div class="consultar__rutas--container">
+      <label for="dia_semana">Selecciona Día de la Semana: </label>
+      <select id="dia_semana" name="DiaSemana" [(ngModel)]="seleccion.diaSemana">
+        <option value="0">Lunes</option>
+        <option value="1">Martes</option>
+        <option value="2">Miercoles</option>
+        <option value="3">Jueves</option>
+        <option value="4">Viernes</option>
+        <option value="5">Sabado</option>
+        <option value="6">Domingo</option>
+        <!-- Agregar opciones para los demás días -->
+      </select>
+    </div>
+
+    <!-- Agregamos campos para seleccionar estaciones inicial y final-->
+    <div class="consultar__rutas--container">
+      <label class="estacion" for="estacion_inicial">Selecciona Estación Inicial: </label>
+      <input class="estacion__buscador" type="text" id="estacion_inicial" name="EstacionInicial" [(ngModel)]="seleccion.estacionInicial" (input)="filtrarEstacionesInicialPrueba($event)" autocomplete="off">
+      <div class="estacion__buscador--result-container estaciones-sugeridas" *ngIf="seleccion.estacionInicial && estacionesFiltradasInicial.length > 0">
+        <ul class="estacion__buscador--resultados">
+          <li class="estacion__buscador--estaciones" *ngFor="let estacion of estacionesFiltradasInicial" (click)="seleccion.estacionInicial = estacion.nombre; seleccion.origen = estacion.idEstacion; estacionesFiltradasInicial = []">
+            {{ estacion.nombre }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="consultar__rutas--container">
+      <label class="estacion" for="estacion_final">Selecciona Estación Final: </label>
+      <input class="estacion__buscador" type="text" id="estacion_final" name="EstacionFinal" [(ngModel)]="seleccion.estacionFinal" (input)="filtrarEstacionesFinalPrueba($event)" autocomplete="off">
+      <div class="estacion__buscador--result-container estaciones-sugeridas" *ngIf="seleccion.estacionFinal && estacionesFiltradasFinal.length > 0">
+        <ul class="estacion__buscador--resultados">
+          <li class="estacion__buscador--estaciones" *ngFor="let estacion of estacionesFiltradasFinal" (click)="seleccion.estacionFinal = estacion.nombre; seleccion.destino = estacion.idEstacion; estacionesFiltradasFinal = []">
+            {{ estacion.nombre }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </form>
+  <div class="crear_ruta--bottom">
+    <button class="consultar__rutas--enviar" (click)="enviarConsulta()">Enviar</button>
+  </div>
+  <img *ngIf="imagenBase64" [src]="'data:image/png;base64,' + imagenBase64" alt="Imagen">
 </section>
+
